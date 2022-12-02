@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apireticula
+spec:
+  selector:
+    matchLabels:
+      app: apireticula
+  replicas: 7
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+       maxUnavailable: 1
+       maxSurge: 1
+  minReadySeconds: 2
+  template:
+    metadata:
+      labels:
+        app: apireticula
+    spec:
+      containers:
+      - name: apireticula
+        image: rebecavaladez/reticulaisc_api_www:latest
+        ports:
+        - containerPort: 80

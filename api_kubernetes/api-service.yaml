@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apireticula-svc
+  labels:
+    app: apireticula
+spec: 
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 31000
+    protocol: TCP
+  selector:
+    app: apireticula
